@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Model files
+*.pth
+*.pt
+*.onnx
+
+# Datasets
+datasets/
+
+# Evidence files
+storage/
+original_evidence/
+
+# Generated results
+results/
+reports/
+
+# Frontend
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
