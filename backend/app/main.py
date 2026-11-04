@@ -9,7 +9,7 @@ from app.core.database import (
     close_database
 )
 
-from app.api.auth_routes import router as auth_router
+from app.api import auth_routes,user_routes
 from app.core.init_db import initialize_database
 
 
@@ -52,7 +52,15 @@ app.add_middleware(
 )
 
 
-app.include_router(auth_router)
+app.include_router(
+    auth_routes.router,
+    prefix="/api/v1"
+)
+
+app.include_router(
+    user_routes.router,
+    prefix="/api/v1"
+)
 
 @app.get("/")
 def home():

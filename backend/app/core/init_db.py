@@ -1,4 +1,7 @@
 from app.core.database import database
+from app.models.audit_model import audit_collection
+
+from app.models.organization_model import organizations_collection
 
 
 def initialize_database():
@@ -64,3 +67,22 @@ def initialize_database():
 )
 
     print("Database collections and indexes initialized!")
+
+
+
+
+audit_collection.create_index(
+    [("actor_user_id", 1), ("created_at", -1)]
+)
+
+audit_collection.create_index(
+    [("target_user_id", 1), ("created_at", -1)]
+)
+
+audit_collection.create_index(
+    [("action", 1), ("created_at", -1)]
+)
+organizations_collection.create_index(
+    "name",
+    unique=True
+)

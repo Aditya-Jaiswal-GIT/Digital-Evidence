@@ -46,3 +46,22 @@ def consume_refresh_token(token_hash: str):
         }
 
     )
+
+
+def revoke_all_user_refresh_tokens(user_id: str):
+    now = datetime.now(timezone.utc)
+
+    result = tokens_collection.update_many(
+        {
+            "user_id": user_id,
+            "revoked_at": None,
+            "expires_at": {"$gt": now}
+        },
+        {
+            "$set": {
+                "revoked_at": now
+            }
+        }
+    )
+
+    return result.modified_count
