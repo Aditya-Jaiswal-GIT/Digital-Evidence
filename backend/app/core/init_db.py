@@ -53,4 +53,14 @@ def initialize_database():
         [("organization_id", 1), ("timestamp", -1)]
     )
 
+    database.refresh_tokens.create_index(
+    "token_hash",
+    unique=True
+)
+
+    database.refresh_tokens.create_index(
+    "expires_at",
+    expireAfterSeconds=0
+)
+
     print("Database collections and indexes initialized!")

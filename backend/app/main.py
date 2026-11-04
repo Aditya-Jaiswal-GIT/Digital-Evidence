@@ -9,7 +9,9 @@ from app.core.database import (
     close_database
 )
 
+from app.api.auth_routes import router as auth_router
 from app.core.init_db import initialize_database
+
 
 
 @asynccontextmanager
@@ -35,6 +37,8 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+
+
 # CORS CONFIGURATION
 app.add_middleware(
     CORSMiddleware,
@@ -47,6 +51,8 @@ app.add_middleware(
     allow_headers=["Content-Type", "Authorization"],
 )
 
+
+app.include_router(auth_router)
 
 @app.get("/")
 def home():
