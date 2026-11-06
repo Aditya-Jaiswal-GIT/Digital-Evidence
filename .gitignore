@@ -38,3 +38,11 @@ dist/
 
 # Logs
 *.log
+
+
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+venv/

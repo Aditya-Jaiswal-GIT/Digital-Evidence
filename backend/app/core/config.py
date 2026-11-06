@@ -5,7 +5,8 @@ class Settings(BaseSettings):
 
     # Database
     MONGO_URI: str
-    DATABASE_NAME: str = "digital_evidence_db"
+    DATABASE_NAME: str = "digital_evidence_test_db"
+
 
     # Security
     SECRET_KEY: str

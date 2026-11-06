@@ -9,7 +9,7 @@ from app.core.database import (
     close_database
 )
 
-from app.api import auth_routes,user_routes
+from app.api import auth_routes,user_routes,case_routes
 from app.core.init_db import initialize_database
 
 
@@ -59,6 +59,10 @@ app.include_router(
 
 app.include_router(
     user_routes.router,
+    prefix="/api/v1"
+)
+app.include_router(
+    case_routes.router,
     prefix="/api/v1"
 )
 
